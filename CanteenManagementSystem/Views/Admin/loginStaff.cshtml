@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Staff Login";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<hr />
+<br />
+
+<div class="col-md-10 offset-md-1">
+    <section>
+        <div class="login-form-icon">
+            <i class="fas fa-user-circle fa-9x text-secondary offset-md-5"></i>
+        </div>
+        <form id="account" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label>Email Address</label>
+            <div class="form-group">
+                <input type="email" name="staffEmail" class="form-control" id="staffEmail" required>
+                <p class="help-block text-danger"></p>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>*@
+            <label>Password</label>
+            <div class="form-group">
+                <input type="password" name="staffPassword" class="form-control" id="staffPassword" required>
+                <p class="help-block text-danger"></p>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="checkbox" name="staffRememberMe" id="staffRememberMe"><label for="staffRememberMe"> Remember me?</label>
+                <p class="help-block text-danger"></p>
+            </div>
+            @*<div class="form-group">
+            <div class="checkbox">
+                <label asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+        </div>*@
+            <div class="form-group">
+                <input type="checkbox" name="findRole" id="findRole"><label for="findRole">Login As Admin</label>
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+            <div class="form-group">
+                <p>
+                    <a asp-area="Identity" asp-page="/Account/Login">Login as Customer</a>
+                </p>
+            </div>
+        </form>
+    </section>
+</div>
+
+@if (TempData["Messages"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Messages"]");
+        };
+    </script>
+}
+
+@TempData["login"]

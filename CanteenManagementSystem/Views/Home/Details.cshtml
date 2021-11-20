@@ -1,0 +1,62 @@
+﻿@model CanteenManagementSystem.Models.menuDetails
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>menuDetails</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manuName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manuName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.menuPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.menuPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manuAvailbility)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manuAvailbility)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manuType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manuType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.vegOrNonVeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.vegOrNonVeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manuImage)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/menu/@Html.DisplayFor(model => model.manuImage)" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manuDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manuDescription)
+        </dd>
+    </dl>
+    <br />
+</div>
+<div>
+    <a asp-action="showMenu">Back to List</a> | 
+    <a asp-action="orderNow" asp-route-id="@ViewBag.menuId" class="btn btn-outline-primary">Order Now</a>
+</div>

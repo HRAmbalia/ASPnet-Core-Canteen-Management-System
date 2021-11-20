@@ -1,0 +1,72 @@
+﻿@model CanteenManagementSystem.Models.menuDetails
+
+@{
+    ViewData["Title"] = "Insert new Item";
+    Layout = "~/Views/Staff/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="manuName" class="control-label"></label>
+                <input asp-for="manuName" name="manuName" id="manuName" class="form-control" />
+                <span asp-validation-for="manuName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="menuPrice" class="control-label"></label>
+                <input asp-for="menuPrice" name="menuPrice" id="menuPrice" class="form-control" type="number" />
+                <span asp-validation-for="menuPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manuAvailbility" class="control-label"></label>
+                <input asp-for="manuAvailbility" value="yes" name="manuAvailbility" id="yes" type="radio" /><label for="yes">Yes</label>
+                <input asp-for="manuAvailbility" value="no" name="manuAvailbility" id="no" type="radio" /><label for="no">No</label>
+                <span asp-validation-for="manuAvailbility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manuType" class="control-label" for="menu"></label>
+                <input asp-for="manuType" name="manuType" id="manuType" class="form-control" list="menuTypes" />
+                <datalist id="menuTypes">
+                    <option value="Fastfood" />
+                    <option value="Colddrinks" />
+                    <option value="Sweets" />
+                    <option value="Fullthali" />
+                    <option value="Hotdrinks" />
+                    <option value="IceCreams" />
+                </datalist>
+                <span asp-validation-for="manuType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vegOrNonVeg" class="control-label">Veg or NonVeg? :</label>
+                <input asp-for="vegOrNonVeg" value="veg" name="vegOrNonVeg" id="veg" type="radio" /><label for="veg">Veg</label>
+                <input asp-for="vegOrNonVeg" value="nonveg" name="vegOrNonVeg" id="nonveg" type="radio" /><label for="nonveg">Non Veg</label>
+                <span asp-validation-for="vegOrNonVeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manuImage" class="control-label"></label>
+                <input asp-for="manuImage" name="manuImage" id="manuImage" class="form-control" type="file" required/>
+                <span asp-validation-for="manuImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manuDescription" class="control-label"></label>
+                <input asp-for="manuDescription" name="manuDescription" id="manuDescription" class="form-control" />
+                <span asp-validation-for="manuDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,67 @@
+﻿@model CanteenManagementSystem.Models.menuDetails
+
+@{
+    ViewData["Title"] = "Edit Item";
+    Layout = "~/Views/Staff/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                Menu Name : <input asp-for="manuName" class="form-control" />
+                <span asp-validation-for="manuName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Menu Price : <input asp-for="menuPrice" class="form-control" />
+                <span asp-validation-for="menuPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Menu Availbility : <input asp-for="manuAvailbility" value="yes" name="manuAvailbility" id="yes" type="radio" /><label for="yes"> Yes</label>
+                <input asp-for="manuAvailbility" value="no" name="manuAvailbility" id="no" type="radio" /><label for="no">No</label>
+                <span asp-validation-for="manuAvailbility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Menu Type : <input asp-for="manuType" name="manuType" id="manuType" class="form-control" list="menuTypes" />
+                <datalist id="menuTypes">
+                    <option value="Fastfood" />
+                    <option value="Colddrinks" />
+                    <option value="Sweets" />
+                    <option value="Fullthali" />
+                    <option value="Hotdrinks" />
+                </datalist>
+                <span asp-validation-for="manuType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Veg or NonVeg : <input asp-for="vegOrNonVeg" value="veg" name="vegOrNonVeg" id="veg" type="radio" /><label for="veg">Veg</label>
+                <input asp-for="vegOrNonVeg" value="nonveg" name="vegOrNonVeg" id="nonveg" type="radio" /><label for="nonveg">Non Veg</label>
+                <span asp-validation-for="vegOrNonVeg" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                Description : <input asp-for="manuDescription" class="form-control" />
+                <span asp-validation-for="manuDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Menu Image : <img asp-for="manuImage" src="~/images/menu/@ViewBag.menuImage" />
+                <span asp-validation-for="manuImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-primary" /> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CanteenManagementSystem.Models.orderDetails>
+
+@{
+    ViewData["Title"] = "boookedMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>boookedMenu</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.menuId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.menuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.menuPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.menuId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.menuName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.menuPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentStatus)
+            </td>
+            <td>
+                <form asp-action="printPDF" asp-route-id="@item.Id">
+                    <button type="submit" class="btn btn-outline-primary">Print PDF</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

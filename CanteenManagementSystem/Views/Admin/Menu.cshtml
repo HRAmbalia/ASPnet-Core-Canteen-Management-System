@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CanteenManagementSystem.Models.menuDetails>
+
+@{
+    ViewData["Title"] = "showMenu";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+    <link rel="stylesheet" href="~/css/products.css" />
+}
+
+<table class="table">
+    <thead>
+
+    </thead>
+    <tbody>
+        <div class="section outdiv" id="specialities">
+            <h1>Menu for Today</h1>
+            <idv>
+                <form asp-action="menuSearch" asp-controller="Home" enctype="multipart/form-data">
+                    <input type="text" name="menuSearch" id="menuSearch" />
+                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                </form>
+            </idv>
+            <div class="container">
+                <div class="col-md">
+                    <div class="speciality wow fadeIn" data-wow-delay="0.6s">
+                        @foreach (var menu in Model)
+                        {
+                            <div class="spe-prods">
+                                <div class="mainbox">
+                                    <h3>@menu.manuName</h3>
+                                    <img class="rotprod" src="~/images/menu/@menu.manuImage" alt="@menu.manuName">
+                                </div>
+                                <div class="price-big">
+                                    <div>
+                                        <div class="floatting-price">
+                                            <h3>&#x20B9; @menu.menuPrice</h3>
+                                        </div>
+                                        <div class="month">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tbody>
+</table>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["AlertMessage"]");
+        };
+    </script>
+}

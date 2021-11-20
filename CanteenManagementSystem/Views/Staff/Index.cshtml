@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CanteenManagementSystem.Models.menuDetails>
+
+@{
+    ViewData["Title"] = "Staff Home";
+    Layout = "~/Views/Staff/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<hr />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.manuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.menuPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.manuAvailbility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.manuType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vegOrNonVeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.manuImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.manuName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.menuPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.manuAvailbility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.manuType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vegOrNonVeg)
+            </td>
+            <td>
+                <img src="~/images/menu/@Html.DisplayFor(modelItem => item.manuImage)" height="100"/>
+            </td>
+            <td>
+                <a asp-action="Edit" class="fas fa-edit" asp-route-id="@item.Id"></a> |
+                <a asp-action="Details" class="fas fa-info-circle" asp-route-id="@item.Id"></a> |
+                <a asp-action="Delete" class="fas fa-trash"  asp-route-id="@item.Id"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

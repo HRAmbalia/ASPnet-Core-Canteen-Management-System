@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "Register Staff";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <form asp-action="registerStaff" asp-controller="Admin" enctype="multipart/form-data" name="sentMessage" id="contactForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @*<label>First Name : </label>*@
+                        <input type="text" name="staffFirstName" class="form-control" placeholder="Staff First Name *" id="staffFirstName" maxlength="50" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="staffLastName" class="form-control" placeholder="Staff Last Name *" maxlength="50" id="staffLastName" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="staffEmail" class="form-control" placeholder="Staff Email *" id="staffEmail" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="staffPhoneNo" pattern="^[6-9]\d{9}$" class="form-control" placeholder="Staff Phone Number *" maxlength="11" id="staffPhoneNo" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Gender : </label>
+                        <input type="radio" value="Male" id="staffGenderMale" name="staffGender" required> <label for="staffGenderMale">Male</label>
+                        <input type="radio" value="Female" id="staffGenderFemale" name="staffGender"><label for="staffGenderFemale">Female</label>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Role : </label>
+                        <input type="radio" value="Admin" id="staffRoleAdmin" name="staffRole" required><label for="staffRoleAdmin">Admin</label>
+                        <input type="radio" value="Staff" id="staffRoleStaff" name="staffRole"><label for="staffRoleStaff">Staff</label>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="date"  name="staffJoiningDate" class="form-control" placeholder="Staff Joining Date *" id="staffJoiningDate" title="Select Staff Joining Date" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="staffImage" class="form-control" maxlength="900" accept="image/gif, image/jpeg, image/png" placeholder="Staff Image *" id="staffImage" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="staffPassword" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!$%^&*-]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters, Atleast one special character" placeholder="Staff Password *" id="staffPassword" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="staffConfPassword" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!$%^&*-]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters, Atleast one special character" placeholder="Staff Confirm Password *" id="staffConfPassword" required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                    <div id="success"></div>
+                    <button type="submit" onclick="check()" class="btn btn-outline-primary">Register Staff</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (TempData["Messages"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Messages"]");
+        };
+    </script>
+}
