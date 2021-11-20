@@ -118,7 +118,7 @@ namespace CanteenManagementSystem.Controllers
                     var credential = new NetworkCredential
                     {
                         UserName = "joyroy252525@gmail.com", // Sender's email id     
-                        Password = "2hRa&#5gP-#h" // Password     
+                        Password = "*****" // Password     
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
